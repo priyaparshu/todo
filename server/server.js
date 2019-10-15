@@ -6,12 +6,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 
-
-
 mongoose.Promise = global.Promise
 
 
 var app = express();
+const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 
@@ -56,8 +55,8 @@ app.post('/todos', (req, res) => {
 
 
 
-app.listen(5000, () => {
-  console.log('listening on port 5000')
+app.listen(port, () => {
+  console.log(`listening on port ${port}`)
 });
 
 module.exports = { app };
