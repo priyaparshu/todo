@@ -23,4 +23,4 @@ var User = mongoose.model('User', {
 //     console.log(err)
 // })
 
-module.exports = { User }
+module.exports = { User };

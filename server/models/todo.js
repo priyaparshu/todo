@@ -1,11 +1,24 @@
 var mongoose = require('mongoose');
 
 var Todo = mongoose.model('Todo', {
-    text: { type: String, required: true, minlength: 1, trim: true },
-    completed: { type: Boolean, default: false },
-    completedAt: { type: Number, default: null }
+  text: {
+    type: String,
+    required: true,
+    minlength: 1,
+    trim: true
+  },
+  completed: {
+    type: Boolean,
+    default: false
+  },
+  completedAt: {
+    type: Number,
+    default: null
+  }
 });
 
+//=======================================================================
+//create first todo and save to the db
 // var newTodo = new Todo({
 //     text: "  Return books  "
 // });
@@ -15,7 +28,8 @@ var Todo = mongoose.model('Todo', {
 // }, (e) => {
 //     console.log('Unable to save todo', e);
 // });
-
+//======================================================================
+// create 2nd todo and save to the db
 // var todo2 = new Todo(
 //     {
 //         text: 'Do shopping',
@@ -29,5 +43,5 @@ var Todo = mongoose.model('Todo', {
 // }, (e) => {
 //     console.log('Unable to save todo', e);
 // });
-
+//===========================================================================
 module.exports = { Todo };

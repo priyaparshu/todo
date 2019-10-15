@@ -1,4 +1,3 @@
-const { MongoClient, ObjectId } = require('mongodb');
 
 // MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true }, (err, client) => {
 //     if (err) {
@@ -36,22 +35,55 @@ const { MongoClient, ObjectId } = require('mongodb');
 const { MongoClient, ObjectId } = require('mongodb');
 
 MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true }, (err, client) => {
-    if (err) {
-        return console.log('Unable to connect to mongo db server');
-    }
-    console.log('Connected to MongoDB server');
+  if (err) {
+    return console.log('Unable to connect to MongoDB server');
+  }
+  console.log('Connected to MongoDB server');
 
-    const db = client.db('TodoApp');
+  const db = client.db('TodoApp');
+  // db.collection('Todos').insertOne({
+  //   "text": "eat lunch",
+  //   "completed": false
+  // }, (err, data) => {
+  //   if (err) {
+  //     return console.log('Unable to insert todo', err);
+  //   }
+  //   console.log(JSON.stringify(data.ops, undefined, 2));
+  // })
 
 
+  db.collection('Todos').find({
+    _id: new ObjectId('5da4bf442431f06e093791a6')
+  }).toArray().then((res) => {
+    //console.log(usr);
+    console.log(JSON.stringify(res, undefined, 2));
+  }, (err) => {
+    console.log('Unable to fetch users', err);
+  });
 
-    db.collection('Users').find({ name: 'Priya' }).toArray().then((usr) => {
-        //console.log(usr);
-        console.log(JSON.stringify(usr, undefined, 2));
-    }, (err) => {
-        console.log('Unable to fetch users', err);
-    });
+  db.collection('Todos').findOneAndDelete({ _id: new ObjectId('5da4bddfc4041f6da798b93a') }).then(res => {
+    console.log(JSON.stringify(res, null, 2))
+  })
+  db.collection('Todos').findOneAndUpdate({
+    _id: new ObjectId('5da4bf13238dc16deeed995f')
+  }, {
+    $set: {
+      completed: false
+    },
+  }, {
+    returnOriginal: false
+  }).then(res => {
+    console.log(JSON.stringify(res, null, 2))
+  })
+})
 
-});
+// db.collection('Users').find({ name: 'Priya' }).toArray().then((usr) => {
+//   //console.log(usr);
+//   console.log(JSON.stringify(usr, undefined, 2));
+// }, (err) => {
+//   console.log('Unable to fetch users', err);
+// });
+
+
 
 
