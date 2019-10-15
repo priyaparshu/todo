@@ -38,6 +38,21 @@ app.get('/todos/:id', (req, res) => {
   })
 })
 
+//delete id
+app.delete('/todos/:id', (req, res) => {
+  var id = req.params.id;
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+  Todo.findByIdAndDelete(id).then((res) => {
+    if (!res) {
+      return res.status(404).send();
+    }
+    res.send({ res });
+  }).catch((e) => {
+    res.status(404).send();
+  })
+})
 
 app.post('/todos', (req, res) => {
   console.log(req.body)
