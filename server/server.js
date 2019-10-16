@@ -76,11 +76,11 @@ app.delete('/todos/:id', (req, res) => {
   if (!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
-  Todo.findByIdAndDelete(id).then((res) => {
-    if (!res) {
+  Todo.findByIdAndDelete(id).then((task) => {
+    if (!task) {
       return res.status(404).send();
     }
-    res.send({ res });
+    res.send({ task });
   }).catch((e) => {
     res.status(404).send();
   })
