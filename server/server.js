@@ -1,3 +1,4 @@
+require('./config/config')
 var { mongoose } = require('./db/mongoose');
 const { ObjectID } = require('mongodb');
 const _ = require('lodash')
@@ -10,7 +11,7 @@ mongoose.Promise = global.Promise
 
 
 var app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 app.use(bodyParser.json());
 
 
