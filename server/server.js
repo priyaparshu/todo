@@ -5,7 +5,8 @@ const _ = require('lodash')
 var { Todo } = require('./models/todo');
 var express = require('express');
 var bodyParser = require('body-parser');
-
+var path = require('path')
+const fs = require('fs')
 
 mongoose.Promise = global.Promise
 
@@ -13,6 +14,15 @@ mongoose.Promise = global.Promise
 var app = express();
 const port = process.env.PORT;
 app.use(bodyParser.json());
+
+//misc
+let loc = path.join(__dirname + './../profile.json')
+console.log(loc)
+app.get('/', (req, res) => {
+  fs.readFile(loc, 'utf8', (err, data) => {
+    res.send(data)
+  })
+})
 
 
 //resource creation

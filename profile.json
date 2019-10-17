@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Sue",
+    "age": 30,
+    "bio": "enjoys swimming and dancing",
+    "hobbies": [
+      "swimming",
+      "dancing"
+    ]
+  },
+  {
+    "name": "Ken",
+    "age": 50,
+    "bio": "enjoys swimming and biking",
+    "hobbies": [
+      "swimming",
+      "biking"
+    ]
+  }
+]
